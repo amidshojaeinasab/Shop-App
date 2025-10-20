@@ -1,10 +1,12 @@
-﻿import { createContext, useEffect, useState } from "react"
+﻿import { createContext, useContext, useEffect, useState } from "react"
 import api from "../services/config"
 
 const ProdutContext = createContext()
-const [products , setProducts] = useState
+
 
 function ProductsProvider({children}) {
+    const [products , setProducts] = useState([])
+    
     useEffect(() => {
         const fetchProducts = async () => {
             try {
@@ -23,4 +25,10 @@ function ProductsProvider({children}) {
   )
 }
 
+const useProducts = () => {
+    const products = useContext(ProdutContext)
+    return products
+}
+
 export default ProductsProvider
+export {useProducts}
