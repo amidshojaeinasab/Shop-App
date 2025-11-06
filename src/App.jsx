@@ -6,13 +6,16 @@ import CheckoutPage from "./Pages/CheckoutPage"
 import PageNotFound from "./Pages/404"
 import ProductsProvider from "./context/ProducContext"
 import CartProvider from "./context/CardContext"
+import Layout from "./Layout/Layout"
 
 function App() {
  
 
   return (
+    
     <CartProvider>
       <ProductsProvider>
+        <Layout>
         <Routes>
           <Route index element={<Navigate to="/products" replace />} />
           <Route path="/products" element={<ProductsPage/>} />
@@ -20,6 +23,7 @@ function App() {
           <Route path="/checkout" element={<CheckoutPage/>} />
           <Route path="/*" element={<PageNotFound/>} />
         </Routes>
+        </Layout>
       </ProductsProvider>
     </CartProvider>
   )
